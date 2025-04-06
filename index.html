@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAVEBLUE - Water Quality Analysis</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #000000; /* Changed to pure black */
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .title-group h1 {
+            margin: 0;
+            font-size: 36px;
+            margin-bottom: 5px; /* 👈 Add this to reduce space */
+        }
+
+        .title-group h4 {
+            margin: 0;
+            font-weight: bold;
+            letter-spacing: 5px;
+            font-size: 10px;
+        }
+
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+            nav a:hover {
+                color: #3498db;
+            }
+
+        .current-page {
+            color: #3498db;
+            font-weight: bold;
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+
+
+        .upload-box {
+            border: 2px dashed #3498db;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+            .upload-box:hover {
+                background-color: rgba(52, 152, 219, 0.1);
+            }
+
+            .upload-box p {
+                margin-top: 15px;
+                font-size: 16px;
+                color: #ccc;
+            }
+
+        .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+            .btn:hover {
+                background-color: #2980b9;
+            }
+
+        .result-box {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .water-quality {
+            margin-top: 20px;
+        }
+
+        .quality-meter {
+            height: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .quality-level {
+            height: 100%;
+            background: linear-gradient(to right, #e74c3c, #f39c12, #2ecc71);
+            width: 0%;
+            transition: width 1s;
+        }
+
+        .quality-description {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .file-info {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .logo {
+            height: 150px;
+            width: auto;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: white;
+        }
+
+            .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 12px 24px rgba(0,0,0,0.6);
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title-group">
+            <h1>SAVEBLUE</h1>
+            <h4>DETECT.PROTECT.PRESERVE</h4>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="impact.html">Impact</a>
+            <a href="alert.html">Alert System</a>
+            <a href="benefits.html">Benefits</a>
+            <a href="about.html">About us </a>
+
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="card">
+                <h1>Water Quality Analysis</h1>
+                <p>Upload an image of water to analyze its quality and pollution level</p>
+
+                <div id="uploadContainer" class="upload-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#3498db" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                        <path d="M.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5H1zm1 .5h12v12H1v-12z" />
+                    </svg>
+                    <p>Drag & drop water image here or click to browse</p>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    <div class="file-info" id="fileInfo"></div>
+                </div>
+
+                <button id="analyzeBtn" class="btn" disabled>Analyze Water Quality</button>
+
+                <div id="resultBox" class="result-box">
+                    <div class="result-header">
+                        <h2>Analysis Results</h2>
+                        <span id="qualityStatus" style="font-weight: bold; color: #2ecc71;">Good</span>
+                    </div>
+
+                    <div class="water-image">
+                        <img id="resultImage" src="" alt="Uploaded water sample" style="max-width: 100%; border-radius: 5px;">
+                    </div>
+
+                    <div class="water-quality">
+                        <h3>Water Quality: <span id="qualityPercentage">75%</span></h3>
+                        <div class="quality-meter">
+                            <div id="qualityLevel" class="quality-level"></div>
+                        </div>
+                    </div>
+
+                    <div class="quality-description">
+                        <p id="qualityDescription">The water appears to be in good condition with minimal pollution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const uploadContainer = document.getElementById('uploadContainer');
+        const fileInfo = document.getElementById('fileInfo');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const resultBox = document.getElementById('resultBox');
+        const resultImage = document.getElementById('resultImage');
+        const qualityStatus = document.getElementById('qualityStatus');
+        const qualityPercentage = document.getElementById('qualityPercentage');
+        const qualityLevel = document.getElementById('qualityLevel');
+        const qualityDescription = document.getElementById('qualityDescription');
+
+        uploadContainer.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', handleFileSelect);
+
+        analyzeBtn.addEventListener('click', analyzeWaterQuality);
+
+        uploadContainer.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadContainer.style.backgroundColor = 'rgba(52, 152, 219, 0.2)';
+        });
+
+        uploadContainer.addEventListener('dragleave', () => {
+            uploadContainer.style.backgroundColor = 'transparent';
+        });
+
+        uploadContainer.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadContainer.style.backgroundColor = 'transparent';
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                handleFileSelect();
+            }
+        });
+
+        function handleFileSelect() {
+            if (fileInput.files && fileInput.files[0]) {
+                const file = fileInput.files[0];
+                fileInfo.textContent = `Selected file: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
+                analyzeBtn.disabled = false;
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    resultImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function analyzeWaterQuality() {
+            analyzeBtn.textContent = 'Analyzing...';
+            analyzeBtn.disabled = true;
+
+            setTimeout(() => {
+                const quality = Math.floor(Math.random() * 100);
+                displayResults(quality);
+
+                analyzeBtn.textContent = 'Analyze Water Quality';
+                analyzeBtn.disabled = false;
+            }, 2000);
+        }
+
+        function displayResults(quality) {
+            qualityPercentage.textContent = `${quality}%`;
+            qualityLevel.style.width = `${quality}%`;
+
+            let status, color, description;
+
+            if (quality > 80) {
+                status = "Excellent";
+                color = "#2ecc71";
+                description = "Excellent water quality with very low pollution.";
+            } else if (quality > 60) {
+                status = "Good";
+                color = "#27ae60";
+                description = "Good water quality with minor pollution.";
+            } else if (quality > 40) {
+                status = "Fair";
+                color = "#f39c12";
+                description = "Moderate pollution. Caution advised.";
+            } else if (quality > 20) {
+                status = "Poor";
+                color = "#e67e22";
+                description = "Significant pollution. Avoid contact.";
+            } else {
+                status = "Critical";
+                color = "#e74c3c";
+                description = "Severely polluted and hazardous.";
+            }
+
+            qualityStatus.textContent = status;
+            qualityStatus.style.color = color;
+            qualityDescription.textContent = description;
+            resultBox.style.display = 'block';
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

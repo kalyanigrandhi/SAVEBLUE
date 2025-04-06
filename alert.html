@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SAVEBLUE - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background image */
+        .hero {
+            background: url('background_alert.avif') no-repeat center center/cover; height: 100vh;
+            position: relative;
+            color: white;
+        }
+
+        /* Top navigation bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+            .navbar h1 {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+
+            .navbar p {
+                font-size: 12px;
+                letter-spacing: 5px;
+            }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+            .nav-links a {
+                text-decoration: none;
+                color: white;
+                font-size: 18px;
+                transition: color 0.3s ease;
+            }
+
+                .nav-links a:hover {
+                    color: #00bfff;
+                }
+
+        /* Animated black shade box */
+        .coming-soon-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 80px;
+            border-radius: 20px;
+            animation: moveBox 6s infinite alternate ease-in-out;
+        }
+
+            .coming-soon-box h2 {
+                font-size: 36px;
+                color: white;
+                letter-spacing: 2px;
+            }
+
+        @keyframes moveBox {
+            0% {
+                transform: translate(-50%, -50%) translateY(-10px);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) translateY(10px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <!-- NAVBAR -->
+        <div class="navbar">
+            <div>
+                <h1>SAVEBLUE</h1>
+                <p>DETECT.PROTECT.PRESERVE</p>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="impact.html">Impact</a>
+                <a href="alert.html">Alert System</a>
+                <a href="benefits.html">Benefits</a>
+                <a href="about.html">About us</a>
+            </div>
+        </div>
+
+        <!-- MOVING BLACK BOX -->
+        <div class="coming-soon-box">
+            <h1>Coming Soon</h1>
+        </div>
+    </div>
+
+</body>
+</html>

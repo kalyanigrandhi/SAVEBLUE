@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Impact</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('background_impact.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .title-group h1 {
+            margin: 0;
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+
+        .title-group h4 {
+            margin: 0;
+            font-weight: bold;
+            letter-spacing: 5px;
+            font-size: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-container h1 {
+            margin: 0;
+            font-size: 48px;
+            font-weight: normal;
+            color: white;
+        }
+
+        .logo-container h4 {
+            margin: 2px 0 0 0;
+            font-size: 18px;
+            letter-spacing: 1px;
+            color: white;
+            font-weight: normal;
+        }
+
+        .impact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .impact-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            width: 100%;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .impact-box h1 {
+            font-size: 56px;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+
+        .impact-box p {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        /* Updated card style like the second image */
+        .card {
+            background-color: #1e2a38; /* Dark card */
+            color: white;
+            border-radius: 12px;
+            padding: 20px 25px;
+            width: 300px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: white;
+            margin-top: 6px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo-container h1 {
+                font-size: 36px;
+            }
+
+            .logo-container h4 {
+                font-size: 16px;
+            }
+
+            nav a {
+                font-size: 18px;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="title-group">
+            <h1>SAVEBLUE</h1>
+            <h4>DETECT.PROTECT.PRESERVE</h4>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="impact.html">Impact</a>
+            <a href="alert.html">Alert System</a>
+            <a href="benefits.html">Benefits</a>
+            <a href="about.html">About us</a>
+        </nav>
+    </header>
+
+    <!-- Impact Content -->
+    <div class="impact-container">
+        <div class="impact-box">
+            <h1>Our Impact</h1>
+            <p>Making a difference in water quality and environmental preservation</p>
+
+            <div class="card-container">
+                <div class="card">
+                    <h2>Pollution Detected</h2>
+                    <p>Using advanced AI technology, we have detected and monitored pollution in numerous water bodies, identifying key sources of contamination.</p>
+                </div>
+                <div class="card">
+                    <h2>Communities Engaged</h2>
+                    <p>We have educated and collaborated with local communities to address water quality issues, fostering environmental stewardship.</p>
+                </div>
+                <div class="card">
+                    <h2>Restoration Efforts</h2>
+                    <p>Through targeted clean-up and restoration projects, we have improved the health of aquatic ecosystems and habitats.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

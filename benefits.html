@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAVEBLUE - Benefits</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background_benefits.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .title-group h1 {
+            margin: 0;
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+
+        .title-group h4 {
+            margin: 0;
+            font-weight: bold;
+            letter-spacing: 5px;
+            font-size: 10px;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+            .logo-container h1 {
+                margin: 0;
+                font-size: 36px;
+                font-weight: normal;
+                color: white;
+            }
+
+            .logo-container h4 {
+                margin: 5px 0 0 0;
+                font-weight: normal;
+                letter-spacing: 1px;
+                font-size: 14px;
+                color: white;
+            }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+                transition: color 0.3s;
+            }
+
+                
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .main-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+        }
+
+        .main-title {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: normal;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border-left: 3px solid #00d2ff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+            .benefit-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+
+        .benefit-icon {
+            font-size: 28px;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+
+        .benefit-title {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .benefit-description {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 15px;
+                width: 100%;
+            }
+
+            .logo-container h1 {
+                font-size: 28px;
+            }
+
+            .logo-container h4 {
+                font-size: 12px;
+            }
+
+            .main-title {
+                font-size: 36px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="title-group">
+            <h1>SAVEBLUE</h1>
+            <h4>DETECT.PROTECT.PRESERVE</h4>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="impact.html">Impact</a>
+            <a href="alert.html">Alert System</a>
+            <a href="benefits.html">Benefits</a>
+            <a href="about.html">About us</a>
+        </nav>
+    </header>
+
+    <!-- Benefits Content -->
+    <div class="container">
+        <div class="main-box">
+            <h1 class="main-title">Benefits</h1>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h2 class="benefit-title"><span class="benefit-icon"></span> Instant Water Quality Analysis</h2>
+                    <p class="benefit-description">Upload a water image and get real-time insights on pollution levels using AI—fast and hassle-free.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h2 class="benefit-title"><span class="benefit-icon"></span> No Sensors or Hardware Required</h2>
+                    <p class="benefit-description">Unlike traditional water testing, SAVEBLUE requires no IoT devices—just your phone or camera.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h2 class="benefit-title"><span class="benefit-icon"></span> Early Detection & Alerts</h2>
+                    <p class="benefit-description">Detect harmful contaminants before they spread, enabling quick response and damage control.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h2 class="benefit-title"><span class="benefit-icon"></span> Empowers Local Communities</h2>
+                    <p class="benefit-description">Gives people the tools to test and protect their own water sources—bridging the gap between science and citizens.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h2 class="benefit-title"><span class="benefit-icon"></span> Educational and Research-Friendly</h2>
+                    <p class="benefit-description">Helps students, researchers, and NGOs learn about water safety and environmental health in an interactive way.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h2 class="benefit-title"><span class="benefit-icon"></span> Eco-Conscious & Scalable</h2>
+                    <p class="benefit-description">Promotes environmental stewardship with a sustainable, scalable solution that can be used anywhere in the world.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
