@@ -1,0 +1,83 @@
+import pandas as pd
+import numpy as np
+import requests
+from PIL import Image
+from io import BytesIO
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+
+# Load CSV
+df = pd.read_csv('/content/cloudinary_links.final.csv')
+
+# Load and preprocess images
+def load_image(url, size=(128, 128)):
+    try:
+        response = requests.get(url)
+        img = Image.open(BytesIO(response.content)).convert('RGB')
+        img = img.resize(size)
+        return np.array(img) / 255.0
+    except:
+        return None
+
+X = []
+y = []
+for _, row in df.iterrows():
+    img = load_image(row['url'])
+    if img is not None:
+        X.append(img)
+        y.append(0 if row['label'] == 'clean' else 1)
+
+X = np.array(X)
+y = np.array(y)
+
+# Train-test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Build CNN model
+model = Sequential([
+    Conv2D(32, (3,3), activation='relu', input_shape=(128, 128, 3)),
+    MaxPooling2D(2,2),
+    Conv2D(64, (3,3), activation='relu'),
+    MaxPooling2D(2,2),
+    Flatten(),
+    Dense(64, activation='relu'),
+    Dense(1, activation='sigmoid')  # Binary classification
+])
+
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Train the model and store history
+history = model.fit(X_train, y_train, epochs=5, validation_data=(X_test, y_test))
+
+# Evaluate and print final test accuracy
+loss, accuracy = model.evaluate(X_test, y_test)
+print(f"\n🧠 Final Test Accuracy: {accuracy * 100:.2f}%")
+
+# 📊 Plot Accuracy and Loss
+plt.figure(figsize=(12,5))
+
+# Accuracy
+plt.subplot(1, 2, 1)
+plt.plot(history.history['accuracy'], label='Training Acc')
+plt.plot(history.history['val_accuracy'], label='Validation Acc')
+plt.title('Accuracy over Epochs')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.grid(True)
+
+# Loss
+plt.subplot(1, 2, 2)
+plt.plot(history.history['loss'], label='Training Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+plt.title('Loss over Epochs')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend()
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
